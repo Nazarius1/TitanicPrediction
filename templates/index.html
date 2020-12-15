@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Titanic</title>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<!-- Main Input For Receiving Query to our ML -->
+<div class="login">
+  <section class="container-fluid">
+        <section class="row justify-content-center">
+            <form class="form-container" action="{{ url_for('predict')}}" method="post">
+            <h1>Titanic survival prediction</h1>
+              <div class="form-group">
+              	<input type="text" class="form-control" name="age" placeholder="Age" required="required" />
+                <select class="form-control" name="sex" id="sexId">
+                  <option disabled selected value> -- Select Sex -- </option>
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                <select class="form-control" name="embarked" id="embarkedId">
+                  <option disabled selected value> -- Select Embarkation -- </option>
+                  <option value="Q">Q</option>
+                  <option value="C">C</option>
+                  <option value="S">S</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+              </div>
+            </form>
+        </section>
+  </section>
+<h4 class="space">{{ prediction_text }}</h4>
+</div>
+</body>
+</html>
